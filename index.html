@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IngiborgVR</title>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <a-sky color="#87CEEB"></a-sky>
+
+        <a-plane position="0 0 -3" rotation="-90 0 0" width="10" height="10" color="#1E5945"></a-plane>
+        
+        <a-box position="0 2 -3" rotation="0 45 45" color="purple"
+               animation="property: rotation; to: 0 405 405; dur: 10000; loop: true">
+        </a-box>
+      
+        <a-cylinder id="intercylinder" position="2.5 2 -3" rotation="0 60 25" height="3" color="blue"
+                    animation="property: rotation; to: 0 405 405; dur: 8000; loop: true">
+        </a-cylinder>
+      
+        <a-sphere id="intersphere" position="-2 2 -3" radius="0.3" color="red">
+        </a-sphere>
+      
+        <a-cone id="intercone" position="0 1 1" radius-bottom="0.5" height="1.5" color="red"
+                animation="property: position; to: 0 1 2; dur: 2000; dir: alternate; loop: true">
+        </a-cone>
+      
+        <a-torus id="intertorus" position="3 1 0.5" radius="0.5" radius-tubular="0.1" color="gray"
+                 animation="property: rotation; to: 0 360 0; dur: 5000; loop: true">
+        </a-torus>
+      
+        <a-camera position="0 1.6 0">
+            <a-cursor></a-cursor>
+        </a-camera>
+      
+        <a-text position="5 1.6 -3" rotation="0 -60 0" color="Purple" value="Starlight"></a-text>
+        
+        <a-light type="ambient" color="yellow" intensity="0.5"></a-light>
+        <a-light type="directional" color="yellow" intensity="3" position="10 3 2"></a-light>
+    </a-scene>
+</body>
+  
+<script>
+    // Получаем сферу по ID
+    const sphere = document.querySelector('#intersphere');
+    const cylinder = document.querySelector('#intercylinder');
+
+    // Добавляем событие наведения мыши на сферу
+    sphere.addEventListener('mouseenter', () => {
+        sphere.setAttribute('color', 'orange'); // Меняем цвет на оранжевый
+    });
+
+    sphere.addEventListener('mouseleave', () => {
+        sphere.setAttribute('color', 'red'); // Возвращаем цвет на красный
+    });
+
+    // Добавляем событие клика на цилиндр
+    cylinder.addEventListener('click', () => {
+        cylinder.setAttribute('scale', '1.5 1.5 1.5'); // Увеличиваем размер цилиндра
+    });
+
+    cylinder.addEventListener('mouseenter', () => {
+        cylinder.setAttribute('color', 'orange'); // Меняем цвет на оранжевый
+    });
+
+    cylinder.addEventListener('mouseleave', () => {
+        cylinder.setAttribute('color', 'green'); // Возвращаем цвет на зелёный
+    });
+
+</script>
+  
+</html>
